@@ -1,3 +1,28 @@
 <template>
-    
+    <lightning-card title="Speaker Search">
+
+        <lightning-input 
+            label="Speaker Name" 
+            onchange={handleName}>
+        </lightning-input> 
+
+        <lightning-combobox 
+            label="Speciality" 
+            onchange={handleSpeciality} 
+            options={specialityOptions}>
+        </lightning-combobox>
+
+        <div class="slds-align_absolute-center slds-m-top_medium">
+            <lightning-button 
+                label="Search" 
+                onclick={handleSearch} 
+                variant="brand">
+            </lightning-button>
+        </div>
+
+        <template if:true={hasResults}>
+            <c-speaker-list speakers={speakers}></c-speaker-list>
+        </template>
+
+    </lightning-card>
 </template>
