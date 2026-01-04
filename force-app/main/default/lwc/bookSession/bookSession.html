@@ -1,3 +1,37 @@
 <template>
-    
+    <lightning-card title="Speaker Details & Availability">
+
+        <template if:false={speakerId}>
+            <p class="slds-p-around_medium">Select a speaker</p>
+        </template>
+
+        <template if:true={speakerId}>
+            <p><b>Speciality:</b> {speciality}</p>
+            <p><b>Bio:</b> {bio}</p>
+
+            <lightning-input
+                type="date"
+                label="Select Date"
+                onchange={handleDate}>
+            </lightning-input>
+
+        <lightning-combobox
+           label="Select Session"
+           options={sessionOptions}
+           value={selectedSession}
+           onchange={handleSession}>
+        </lightning-combobox>
+
+<div class="slds-align_absolute-center slds-m-top_medium">
+    <lightning-button
+        label="Create Assignment"
+        variant="brand"
+        disabled={disableCreate}
+        onclick={createAssignment}>
+    </lightning-button>
+</div>
+
+        </template>
+
+    </lightning-card>
 </template>
